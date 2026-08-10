@@ -1,0 +1,14 @@
+LẤY DATASET SẴN TỪ ROBOFLOW
+
+Vào universe.roboflow tìm dataset sẵn có
+Vào dataset, chọn Fork
+Vào project, tạo new version
+Tải dataset về
+
+yolo detect train data=data.yaml model=yolo26n.pt epochs=50 imgsz=640
+
+
+yolo detect train data=data.yaml model=yolo11n.pt epochs=50 imgsz=640 batch=16 workers=2
+Results saved to F:\Code\PythonProject\Potatoyolov11\runs\detect\train-3\weights
+
+

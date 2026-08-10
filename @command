@@ -1,0 +1,7 @@
+==== Segment
+yolo segment train data=data.yaml model=yolo11n.pt epochs=100 imgsz=960
+
+yolo segment predict model=runs/detect/train-4/weights/best.pt source=test_images
+
+
+

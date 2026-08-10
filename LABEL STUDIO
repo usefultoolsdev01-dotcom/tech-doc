@@ -1,0 +1,5 @@
+LABEL STUDIO
+
+pip install label-studio
+
+label-studio start

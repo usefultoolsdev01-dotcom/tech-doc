@@ -1,0 +1,42 @@
+Blaster camera Ubuntu Installation
+============================================
+
+Model: Camera  Basler 14gm
+
+1. Cắm dây LAN từ Camera vào cổng
+
+2. Đặt IP tĩnh cho card mạng
+
+# Xem tên interface LAN:
+ip link show
+
+# Đặt IP tạm thời ngay (không cần tên connection):
+sudo ip addr add 192.168.1.50/24 dev enp3s0   # thay enp3s0 bằng tên thực
+sudo ip link set enp3s0 up
+
+# Kiểm tra:
+ip addr show enp3s0
+
+#Cài Pylon SDK
+tar -xf pylon_*.tar.gz
+cd pylon_*_x86_64
+sudo tar -C /opt/pylon -xzf pylonSDK*.tar.gz
+
+#Setup environment
+echo 'export PYLON_ROOT=/opt/pylon' >> ~/.bashrc
+echo 'export PATH=$PYLON_ROOT/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$PYLON_ROOT/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+
+
+sudo /opt/pylon/share/pylon/setup-usb.sh # Cài udev rules để không cần sudo
+
+
+pip install pypylon # Cài Python binding
+
+
+python3 -c "from pypylon import pylon; print('pypylon OK')" # Xác nhận
+
+
+Bước 4 Đặt IP cho camera bằng Pylon IP Configurator
+

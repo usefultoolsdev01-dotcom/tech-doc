@@ -1,0 +1,8 @@
+- Add path to global
+nano ~/.bashrc
+
+- Thêm dòng cuối file
+export PATH="$PATH:/duong/dan/toi/folder"
+
+- Nạp lại cấu hình
+source ~/.bashrc

@@ -1,0 +1,45 @@
+JETSON
+
+ssh j1@192.168.55.1
+Pass: 1
+
+
+
+cat /etc/nv_tegra_release  #Kiểm tra môi trường
+
+
+python3 --version   #Kiêm tra python cần >= 3.8  
+
+nvcc --version #Kiểm tra CUDA
+
+
+
+CÀI DEPENDENCY
+
+sudo apt update && sudo apt upgrade -y
+
+sudo apt install -y python3-pip python3-dev
+
+pip3 install --upgrade pip setuptools wheel
+
+
+CÀIPyTorch ĐÚNG CHO JETSON
+Jetson dùng ARM + CUDA, không dùng PyTorch từ pip thông thường được. Phải lấy từ NVIDIA:
+
+pip3 install torch torchvision --index-url https://developer.download.nvidia.com/compute/redist/jp/v60  # JetPack 6.x dùng torch 2.x cho L4T
+
+python3 -c "import torch; print(torch.__version__); print(torch.cuda.is_available())"  #Kiểm tra
+
+
+
+pip3 install ultralytics #Cài Ultralytics
+
+
+DEPLOY
+#Copy model sang Jetson
+scp -r runs/detect/train-4/weights/best.pt your_user@jetson_ip:~/model/
+scp -r test_images your_user@jetson_ip:~/
+
+#Chạy inference — y hệt Ubuntu
+yolo segment predict model=~/model/best.pt source=~/test_images
+

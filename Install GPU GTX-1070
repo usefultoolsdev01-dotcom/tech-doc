@@ -1,0 +1,24 @@
+Install GeForce GTX 1070
+
+
+- Update package list
+sudo apt update
+
+- Install driver automatically
+sudo ubuntu-drivers install
+
+-Reboot
+
+
+lspci -k | grep -A 3 -i nvidia #Check if Hardware connected
+
+nvidia-smi #- Check if driver worked
+
+
+# Check Info
+nvidia-smi
+
+# Uninstall then Install Torch
+pip uninstall torch torchvision torchaudio -y
+
+pip install torch==2.5.1 torchvision==0.20.1

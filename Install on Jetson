@@ -1,0 +1,66 @@
+
+
+=====================================================
+CHECKING GOOD ENVIRONMENT
+
+- Check Jetson Nano
+cat /etc/nv_tegra_release
+
+
+- Check CUDA
+nvcc --version
+Build cuda_12.6.r12.6/compiler.34714021_0
+
+- Check GPU
+nvidia-smi
+
+- Check Python
+which python
+
+
+- python --version
+-> Python 3.10.12
+
+- Kiểm tra môi trường ảo hiện tại:
+echo $VIRTUAL_ENV
+-> /home/j1/torch_env
+
+
+- Kiểm tra NumPy
+python -c "import numpy; print(numpy.__version__)"
+-> 2.2.6
+
+4. Kiểm tra PyTorch
+python -c "import torch; print(torch.__version__)"
+-> 2.12.0+cu130
+
+
+
+===========================================================================
+12. BỘ LỆNH MÌNH KHUYÊN DÙNG CHO DỰ ÁN MỚI
+python3 -m venv torch_env
+
+source torch_env/bin/activate
+
+pip install --upgrade pip
+
+pip install numpy==1.26.4
+
+pip install --extra-index-url https://pypi.jetson-ai-lab.io/jp6/cu126 \
+torch torchvision
+
+pip install ultralytics
+
+yolo checks
+
+Sau đó kiểm tra:
+
+import torch
+print(torch.cuda.is_available())
+print(torch.cuda.get_device_name(0))
+
+
+
+
+
+

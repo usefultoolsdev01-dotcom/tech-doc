@@ -1,0 +1,16 @@
+VSCode Remote on Jetson
+
+- install Remote - SSH extension
+
+- > Remote-SSH: Add New SSH Host
+  Nhập: ssh username@<jetson_ip>
+  VS Code sẽ lưu vào file ~/.ssh/config
+  
+- > Remote-SSH: Connect to Host
+
+
+
+
+Luu y:
+- tắt IPv6 trên Jetson
+

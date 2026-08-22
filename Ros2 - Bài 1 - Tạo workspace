@@ -1,0 +1,11 @@
+cd ~
+mkdir -p ~/ros2_ws/src
+tree ~/ros2_ws  ;sudo apt install tree
+
+
+
+7. Tạo Package đầu tiên
+
+cd ~/ros2_ws/src
+
+ros2 pkg create my_robot --build-type ament_python

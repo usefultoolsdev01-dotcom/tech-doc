@@ -1,0 +1,41 @@
+Install ROS2
+
+2. Bật kho Universe và thêm GPG key của ROS2
+
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+3. Thêm kho ROS2 vào danh sách nguồn
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+4. Cập nhật và cài ROS2 Humble
+
+sudo apt update
+sudo apt upgrade -y
+
+# Bản đầy đủ (khuyên dùng): gồm RViz, Gazebo, demo, tutorial
+sudo apt install ros-humble-desktop -y
+
+# Hoặc bản tối giản (chỉ CLI + thư viện giao tiếp, không GUI) - phù hợp cho máy nhúng như Raspberry Pi
+sudo apt install ros-humble-ros-base -y
+
+# Công cụ phát triển (khuyên cài thêm nếu bạn sẽ viết package/node)
+sudo apt install ros-dev-tools -y
+
+
+5. Source môi trường ROS2 mỗi khi mở terminal mới
+
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+6. Kiểm tra cài đặt thành công
+
+echo $ROS_DISTRO        # phải in ra "humble"
+ros2 --help             # hiện menu trợ giúp là thành công
+
+# Test demo talker/listener (2 terminal khác nhau)
+ros2 run demo_nodes_cpp talker      # terminal 1
+ros2 run demo_nodes_py listener     # terminal 2

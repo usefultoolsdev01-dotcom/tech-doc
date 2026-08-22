@@ -1,0 +1,38 @@
+Bước 4: Build và chạy thử
+
+
+- Chạy Ros2 + Rviz2
+
+cd ~/ros2_ws
+colcon build --packages-select agv_description
+source install/setup.bash
+
+ros2 launch agv_description display.launch.py
+
+
+
+- CHẠY GAZEBO
+colcon build --packages-select agv_description
+source install/setup.bash
+
+ros2 launch agv_description gazebo.launch.py
+
+
+- BÀN PHÍM ĐIỀU KHIỂN GAZEBO
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+
+- Các lệnh kiểm tra
+# Xem topic đã có chưa
+ros2 topic list
+# Kỳ vọng thấy: /cmd_vel, /odom, /scan, /tf
+
+# Test LiDAR có data không
+ros2 topic echo /scan --once
+
+# Test odometry
+ros2 topic echo /odom --once
+
+==========================
+
+Gazebo → LiDAR → slam_toolbox → RViz2

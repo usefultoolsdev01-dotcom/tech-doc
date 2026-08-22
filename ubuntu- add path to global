@@ -6,3 +6,8 @@ export PATH="$PATH:/duong/dan/toi/folder"
 
 - Nạp lại cấu hình
 source ~/.bashrc
+
+
+1> Remove folder
+
+rm -r FOLDER

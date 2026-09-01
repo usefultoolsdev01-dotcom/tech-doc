@@ -34,4 +34,29 @@ git push #push lên server
 
 git pull #pull mới nhất về
 
+===========
+VỚI FOLDER CODE CHƯA LIÊN KẾT
+
+git init
+git add .gitignore
+git commit -m "chore: add .gitignore"
+
+git status #Kiểm tra trạng thái
+git add .
+git commit -m "feat: initial commit - agv_description, agv_perception, agv_task_dispatcher packages"
+
+#Tạo github server repos
+git@github.com:usefultoolsdev01-dotcom/ros2-tutorial.git
+
+git branch -M main
+git remote add origin git@github.com:usefultoolsdev01-dotcom/ros2-tutorial.git
+
+git push -u origin main
+
+TỪ LẦN 2 TRỞ ĐI:
+git add .
+git commit -m "feat: mô tả thay đổi"
+git push
+
+
 

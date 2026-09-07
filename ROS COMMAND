@@ -8,6 +8,24 @@ Vòng đời làm việc: thuộc lòng
 → ros2 run 
 
 
+#Tạo Workspace
+mkdir -p ~/ros2_ws/src
+
+
+#Tạo Package Python
+cd ~/ros2_ws/src
+ros2 pkg create --build-type ament_python my_package
+
+
+#Them option
+ros2 pkg create --build-type ament_python my_package \
+  --dependencies rclpy std_msgs
+  
+
+#Tạo Package C++
+ros2 pkg create --build-type ament_cmake my_package
+
+
 #Build & install Pakage
 colcon build --packages-select <Package name>
 source install/setup.bash
